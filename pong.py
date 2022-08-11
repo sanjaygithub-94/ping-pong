@@ -66,7 +66,7 @@ def policy_backward(eph, epdlogp):
   dW1 = np.dot(dh.T, epx)
   return {'W1':dW1, 'W2':dW2}
 
-env = gym.make("Pong-v4", render_mode='human')
+env = gym.make("Pong-v4")
 observation = env.reset()
 prev_x = None # used in computing the difference frame
 xs,hs,dlogps,drs = [],[],[],[]
@@ -130,7 +130,7 @@ while True:
     # boring book-keeping
     running_reward = reward_sum if running_reward is None else running_reward * 0.99 + reward_sum * 0.01
     # 20% of 21 (16.8)
-    if running_reward <= 16.8:
+    if running_reward <= -16.8:
       end = time.time()
       SecToConvert = end - start
       MinutesGet, SecondsGet = divmod(SecToConvert, 60)
