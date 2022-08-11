@@ -130,7 +130,7 @@ while True:
     # boring book-keeping
     running_reward = reward_sum if running_reward is None else running_reward * 0.99 + reward_sum * 0.01
     # 20% of 21 (16.8)
-    if running_reward <= -16.8:
+    if running_reward > -16.8:
       end = time.time()
       SecToConvert = end - start
       MinutesGet, SecondsGet = divmod(SecToConvert, 60)
